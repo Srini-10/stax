@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties */
+:root {
+  --color-primary: #000000;
+  --color-secondary: #FFFFFF;
+  --color-accent-pink: #FF3366;
+  --color-accent-cyan: #00D9FF;
+  --color-accent-gold: #FFD700;
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-neutral: #6B7280;
+  
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --radius-button: 6px;
+  --radius-card: 12px;
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply box-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-body text-primary bg-secondary antialiased;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+  }
+  
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h3 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h4 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  button {
+    @apply font-medium transition-all duration-200 ease-in-out;
+  }
+  
+  input, textarea {
+    @apply font-body;
+  }
+}
+
+/* Component Utilities */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-secondary px-8 py-4 rounded-button font-heading font-semibold uppercase tracking-wide hover:bg-neutral transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-accent-pink text-secondary px-8 py-4 rounded-button font-heading font-semibold uppercase tracking-wide hover:bg-opacity-90 transition-all duration-200;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-8 py-4 rounded-button font-heading font-semibold uppercase tracking-wide hover:bg-primary hover:text-secondary transition-all duration-200;
+  }
+  
+  .btn-ghost {
+    @apply text-primary px-6 py-3 font-medium hover:bg-gray-100 rounded-button transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-secondary rounded-card shadow-lg overflow-hidden;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .size-block {
+    @apply w-12 h-12 flex items-center justify-center border-2 border-gray-300 rounded cursor-pointer font-semibold transition-all duration-200 hover:border-primary hover:shadow-md;
+  }
+  
+  .size-block-selected {
+    @apply bg-primary text-secondary border-primary;
+  }
+  
+  .size-block-disabled {
+    @apply bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed hover:border-gray-200 hover:shadow-none;
+  }
+  
+  .color-swatch {
+    @apply w-10 h-10 rounded-full border-2 border-transparent cursor-pointer transition-all duration-200 hover:scale-110 hover:shadow-lg;
+  }
+  
+  .color-swatch-selected {
+    @apply border-primary ring-2 ring-primary ring-offset-2;
+  }
+  
+  .badge {
+    @apply inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wide rounded-full;
+  }
+  
+  .badge-bestseller {
+    @apply bg-accent-gold text-primary;
+  }
+  
+  .badge-new {
+    @apply bg-accent-cyan text-primary;
+  }
+  
+  .badge-sale {
+    @apply bg-accent-pink text-secondary;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-gray-300 rounded-button focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20 transition-all duration-200;
+  }
+  
+  .overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 z-40;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-gradient-pink {
+    @apply bg-gradient-to-r from-accent-pink to-accent-cyan bg-clip-text text-transparent;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl;
+  }
+  
+  .animate-cart-bounce {
+    animation: bounce-subtle 0.6s ease-in-out;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .glass-effect {
+    @apply bg-white bg-opacity-10 backdrop-blur-lg;
+  }
+}
+
+/* Custom Scrollbar for Desktop */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-neutral);
+  }
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f0f0f0 4%, #e0e0e0 25%, #f0f0f0 36%);
+  background-size: 1000px 100%;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
